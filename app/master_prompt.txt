@@ -1,0 +1,155 @@
+You are setting up a brand-new software project optimized for Claude Code CLI.
+Your job is to create the Claude Code project configuration and development scaffolding, but NOT build the actual application yet.
+PRIMARY GOALS
+Create a clean Claude Code project structure.
+Minimize token consumption.
+Keep CLAUDE.md extremely small.
+Move detailed instructions into Skills or documentation.
+Use hooks for deterministic/repetitive operations instead of prompting Claude.
+Create reusable commands and specialized agents only where they provide clear value.
+Avoid duplicated instructions.
+Keep the setup simple enough for developers to understand and maintain.
+TOKEN-EFFICIENCY RULES
+Treat token efficiency as a first-class requirement.
+Do NOT put large documentation, architecture explanations, coding tutorials, examples, or repetitive rules inside CLAUDE.md.
+CLAUDE.md should contain only information Claude needs frequently.
+Target:
+CLAUDE.md: preferably under 100 lines.
+Put task-specific instructions into Skills.
+Put detailed architecture information into docs/.
+Put deterministic actions into hooks.
+Put reusable workflows into commands.
+Use specialized agents for isolated tasks such as code review, debugging, and test generation.
+Never duplicate the same instruction across CLAUDE.md, Skills, agents, commands, and docs.
+Prefer references to existing project files instead of copying their contents.
+PROJECT STRUCTURE
+Create an appropriate structure similar to:
+CLAUDE.md
+README.md
+.gitignore
+.env.example
+.claude/
+settings.json
+skills/
+coding/SKILL.md
+testing/SKILL.md
+debugging/SKILL.md
+documentation/SKILL.md
+agents/
+code-reviewer.md
+debugger.md
+test-writer.md
+commands/
+review.md
+test.md
+explain.md
+docs/
+architecture.md
+conventions.md
+src/
+tests/
+Adapt this structure if the chosen technology stack requires something different.
+CLAUDE.md
+Create a concise CLAUDE.md containing only:
+project purpose
+technology stack
+important project commands
+directory conventions
+essential coding rules
+testing expectations
+security constraints
+instructions telling Claude where deeper information lives
+Do not put detailed tutorials or large examples inside CLAUDE.md.
+SKILLS
+Create focused Skills.
+coding/SKILL.md
+Contains project coding practices.
+testing/SKILL.md
+Contains testing strategy and test-writing instructions.
+debugging/SKILL.md
+Contains the debugging workflow.
+documentation/SKILL.md
+Contains documentation standards.
+Each Skill must have a narrow responsibility.
+Do not repeat global instructions from CLAUDE.md.
+AGENTS
+Create lightweight specialized agents where appropriate:
+code-reviewer
+debugger
+test-writer
+Each agent must have:
+one clear responsibility
+minimal required context
+expected output
+explicit boundaries
+Do not create agents that duplicate Skills.
+COMMANDS
+Create reusable development workflows for:
+/review
+/test
+/explain
+Keep them concise.
+HOOKS
+Configure useful Claude Code hooks through the project settings where appropriate.
+Potential responsibilities:
+formatting after edits
+linting
+protecting sensitive files
+preventing accidental modification of secrets
+lightweight validation
+Do not create expensive hooks that run the entire test suite after every small operation.
+SECURITY
+Claude must never:
+expose secrets
+commit .env files
+hard-code credentials
+modify production credentials
+print API keys
+automatically perform destructive operations
+Create .env.example instead of .env.
+GITIGNORE
+Include common exclusions:
+.env
+.env.*
+node_modules/
+venv/
+.venv/
+pycache/
+dist/
+build/
+coverage/
+IDE files
+OS temporary files
+Adapt these to the selected stack.
+DOCUMENTATION
+Create:
+docs/architecture.md
+docs/conventions.md
+Keep them as lightweight templates initially.
+Do not invent unnecessary architecture before application requirements exist.
+README
+Create a minimal README explaining:
+project purpose
+setup
+development commands
+testing
+Claude Code structure
+EXECUTION PROCESS
+Before creating files:
+Inspect the current directory.
+Confirm whether it is empty.
+Detect any existing Git configuration.
+Avoid overwriting existing files.
+Then create the required structure.
+After creation:
+Validate the generated files.
+Validate JSON configuration.
+Check for duplicated instructions.
+Check whether CLAUDE.md is unnecessarily large.
+Remove unnecessary boilerplate.
+Show the final directory tree.
+Explain which files Claude will use frequently versus only when needed.
+IMPORTANT
+Do not build application features.
+This task is ONLY to establish a clean, maintainable, token-efficient Claude Code development environment.
+When information about the technology stack is missing, keep the configuration stack-neutral instead of inventing requirements.
