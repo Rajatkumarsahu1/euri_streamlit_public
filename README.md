@@ -5,7 +5,7 @@ Public bring-your-own-Euri-key web interface for generating the existing 22-file
 ## Run locally (Windows CMD)
 
 ```cmd
-cd /d "H:\super30\Project 1\euri-streamlit-public"
+cd /d "\euri-streamlit-public"
 python -m pip install -r requirements.txt
 python -m streamlit run streamlit_app.py
 ```
